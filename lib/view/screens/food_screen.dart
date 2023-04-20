@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/utils/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:clip_shadow/clip_shadow.dart';
+ 
 
 class IndividualItem extends StatelessWidget {
   static const routeName = "/individualScreen";
@@ -534,18 +534,18 @@ class IndividualItem extends StatelessWidget {
                                   ),
                                   child: Align(
                                     alignment: Alignment.topRight,
-                                    child: ClipShadow(
-                                      clipper: CustomTriangle(),
-                                      boxShadow: [
-                                        BoxShadow(
+                                     
+                                      child: Container(
+                                        width: 60,
+                                        height: 60,
+                                        decoration: BoxDecoration(
+                                          boxShadow: [ BoxShadow(
                                           color: mainColor,
                                           offset: Offset(0, 5),
                                           blurRadius: 5,
                                         ),
-                                      ],
-                                      child: Container(
-                                        width: 60,
-                                        height: 60,
+                                          ]
+                                        ),
                                         color: Colors.white,
                                         child: Image.asset(
                                        
@@ -554,7 +554,7 @@ class IndividualItem extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                  ),
+                                  
                                 
                               ],
                             ),

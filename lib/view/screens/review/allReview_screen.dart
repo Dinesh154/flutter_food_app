@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/model/All_recipe.dart';
 import 'package:ecommerce_app/model/review/reviewProdect_model.dart';
 import 'package:ecommerce_app/routes/routes.dart';
 import 'package:ecommerce_app/utils/theme.dart';
@@ -13,9 +14,9 @@ import '../../widgets/review/cardRev.dart';
 import '../../widgets/review/reviewRating.dart';
 
 class AllReviewScreen extends StatelessWidget {
-  AllReviewScreen({Key? key}) : super(key: key);
-  final reviewController = Get.find<RreviewProductController>();
-
+  AllReviewScreen({required this.data});
+  final Allrecipes data;
+  final controller = Get.put(RreviewProductController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,50 +32,47 @@ class AllReviewScreen extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  GetBuilder<RreviewProductController>(builder: (_) {
-                    return HandlingDataView(
-                        statusRequest: reviewController.statusReviewProduct,
-                        widget: Container(
-                          width: double.infinity,
-                          height: Get.height * .7,
-                          child: ListView.builder(
-                            physics: const BouncingScrollPhysics(),
-                            itemCount: reviewController.reviewProduct.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return CardRev(
-                                data: reviewController.reviewProduct[index],
-                              );
-                            },
-                          ),
-                        ));
-                  }),
+                  Container(
+                    width: double.infinity,
+                    height: Get.height * .7,
+                    child: ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: data.reviews.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return CardRev(
+                          data: data,
+                          index: index,
+                        );
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 50,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(.2),
-                  ),
-                  child: AuthButton(
-                    press: SharedPrefs.instance.getString('token') == null
-                        ? null
-                        : () {
-                            Get.offAndToNamed(Routes.writeReviewScreen,
-                                arguments: {
-                                  'prodectId': reviewController.idProdect
-                                });
-                          },
-                    text: 'Write Review',
-                  ),
-                ),
-              ),
-            ),
+            // Align(
+            //   alignment: Alignment.bottomCenter,
+            //   child: Padding(
+            //     padding: const EdgeInsets.all(8.0),
+            //     child: Container(
+            //       height: 50,
+            //       width: double.infinity,
+            //       decoration: BoxDecoration(
+            //         color: Colors.grey.withOpacity(.2),
+            //       ),
+            //       child: AuthButton(
+            //         press: SharedPrefs.instance.getString('token') == null
+            //             ? null
+            //             : () {
+            //                 Get.offAndToNamed(Routes.writeReviewScreen,
+            //                     arguments: {
+            //                       'prodectId': reviewController.idProdect
+            //                     });
+            //               },
+            //         text: 'Write Review',
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

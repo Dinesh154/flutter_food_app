@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/view/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -58,7 +59,7 @@ class SplashScreen extends StatelessWidget {
               ),
               AuthButton(
                 press: () {
-                  Get.toNamed(Routes.onBoardingScreen);
+                  Get.to(()=>OnBoardingScreen());
                 },
                 text: 'Let\'s get Started'.tr,
               ),

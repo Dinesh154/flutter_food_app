@@ -10,7 +10,7 @@ import '../utils/sharPreferenceUtils .dart';
 
 class CartServices {
   Future<CartData> addToCart(
-      {required int quantity, required int product_id}) async {
+      {required int quantity, required String product_id}) async {
     var url = '${BaseAPI.authPath}' + '/user/addToCart';
     var body = jsonEncode({'quantity': quantity, 'product_id': product_id});
 

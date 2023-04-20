@@ -8,44 +8,24 @@ import '../../../model/homeRestaurant/homeRestaurantData.dart';
 class ResturantCard extends StatelessWidget {
   const ResturantCard({
     Key? key,
-    required this.homeRestaurantsData,
+    //required this.homeRestaurantsData,
   }) : super(key: key);
-  final HomeRestaurantsData homeRestaurantsData;
+  //final HomeRestaurantsData homeRestaurantsData;
   @override
   Widget build(BuildContext context) {
     
-    return CachedNetworkImage(
-        imageUrl: homeRestaurantsData.logo!,
-        imageBuilder: (context, imageProvider) => Container(
-              margin: EdgeInsets.all(5),
-              width: 110,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.3), BlendMode.darken),
-                  image: CachedNetworkImageProvider(
-                    homeRestaurantsData.logo!,
-                  ),
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Padding(
-                padding: EdgeInsets.only(
-                    right: 5.w, bottom: 0, left: 10.w, top: 55.h),
-                child: Text(
-                  homeRestaurantsData.name!,
-                  maxLines: 1,
-                  style: GoogleFonts.roboto(
-                    textStyle: TextStyle(
-                      color: Colors.white.withOpacity(1),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                ),
-              ),
-            ));
+    return  Center(
+      child: Container(
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.r),
+
+        ),
+        child: Image.asset("assets/resturant.png",
+        width: 350.w,
+        fit: BoxFit.cover,
+        ),
+      ),
+    );
   }
 }

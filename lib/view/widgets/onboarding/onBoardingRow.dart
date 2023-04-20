@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/logic/controllers/all_recipe_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,8 @@ import '../../../logic/controllers/onboarding_controller.dart';
 import '../../../routes/routes.dart';
 import '../../../utils/theme.dart';
 import '../textWithFont.dart';
+
+var _controller = Get.put(All_recipe_controller());
 
 class OnBoardingRow extends StatelessWidget {
   const OnBoardingRow({
@@ -25,7 +28,8 @@ class OnBoardingRow extends StatelessWidget {
         children: [
           TextButton(
             onPressed: () {
-              Get.offAndToNamed(Routes.mainScreen);
+               Get.offAndToNamed(Routes.mainScreen);
+              //_controller.fetchAll_recipe();
             },
             child: TextWithFont().textWithRobotoFont(
               text: 'Skip'.tr,
@@ -35,7 +39,7 @@ class OnBoardingRow extends StatelessWidget {
             ),
           ),
           Padding(
-            padding:  EdgeInsets.only(right:10.w ),
+            padding: EdgeInsets.only(right: 10.w),
             child: GestureDetector(
               onTap: () {
                 controller.next();
@@ -53,7 +57,6 @@ class OnBoardingRow extends StatelessWidget {
             ),
           ),
         ],
-        
       ),
     );
   }

@@ -153,13 +153,13 @@ class AppRoutes {
     //   page: () => FoodScreen(),
     // ),
 
-    GetPage(
-        name: Routes.productDetailsScreen,
-        page: () => ProductDetailsScreen(),
-        bindings: [
-          ProductDetailsBindings(),
-          FavoritesBindings(),
-        ]),
+    // GetPage(
+    //     name: Routes.productDetailsScreen,
+    //     page: () => ProductDetailsScreen(),
+    //     bindings: [
+    //       ProductDetailsBindings(),
+    //       FavoritesBindings(),
+    //     ]),
     GetPage(
       name: Routes.checkoutScreen,
       page: () => CheckoutScreen(),
@@ -169,10 +169,7 @@ class AppRoutes {
         name: Routes.changeAddressScreen,
         page: () => ChangeAddressScreen(),
         binding: AddressBindings()),
-    GetPage(
-        name: Routes.allReviewScreen,
-        page: () => AllReviewScreen(),
-        binding: RreviewProductBinding()),
+   
 
     GetPage(
       name: Routes.writeReviewScreen,

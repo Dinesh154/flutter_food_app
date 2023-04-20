@@ -6,12 +6,11 @@ import '../../../logic/controllers/reviewProduct_controllers.dart';
 import '../../../utils/theme.dart';
 
 class ReviewRating extends StatelessWidget {
-  final reviewProductController = Get.find<RreviewProductController>();
-
+  final reviewProductController = Get.put(RreviewProductController());
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: 60.h,
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: ListView.separated(
         scrollDirection: Axis.horizontal,

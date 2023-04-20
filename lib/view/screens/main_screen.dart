@@ -16,13 +16,13 @@ import '../../utils/theme.dart';
 
 class MainScreen extends StatelessWidget {
   MainScreen({Key? key}) : super(key: key);
-  final ConnectionManagerController _controller =
-      Get.find<ConnectionManagerController>();
-  final controller = Get.find<MyLocaleController>();
+  // final ConnectionManagerController _controller =
+  //     Get.find<ConnectionManagerController>();
+  // final controller = Get.find<MyLocaleController>();
 
-  final mainController = Get.find<MainController>();
-  final categoryController = Get.find<CategoryController>();
-  final authController = Get.find<AuthController>();
+  final mainController = Get. put(MainController());
+  final categoryController = Get.put(CategoryController());
+  final authController = Get. put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +36,7 @@ class MainScreen extends StatelessWidget {
           statusBarColor: Theme.of(context).textTheme.headline2!.color),
     );
     return SafeArea(
-      child: Obx(
-        () {
-          return _controller.connectionType.value == 1
-              ? Scaffold(
+      child:  Scaffold(
                   body: PersistentTabView(
                     context,
                     controller: mainController.controller.value,
@@ -73,15 +70,9 @@ class MainScreen extends StatelessWidget {
                     navBarStyle: NavBarStyle.style3,
                   ),
                 )
-              : Scaffold(
-                
-                  body: Center(
-                    child: Lottie.asset('assets/lottie/no_connection.json',
-                        width: 250.w, height: 250.h),
-                  ),
-                );
-        },
-      ),
+               
+        
+      
     );
   }
 }

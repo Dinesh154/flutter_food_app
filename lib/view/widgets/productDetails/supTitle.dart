@@ -10,7 +10,7 @@ class SupTitle extends StatelessWidget {
     Key? key, required this.supTitle, required this.price, required this.cal,
   }) : super(key: key);
 final String supTitle;
-final String price;
+final  int price;
 final String cal;
   @override
   Widget build(BuildContext context) {

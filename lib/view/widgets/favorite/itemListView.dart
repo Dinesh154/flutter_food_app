@@ -62,7 +62,7 @@ class ItemListView extends GetView<FavoritesController> {
               SizedBox(width: 70.w),
               ElevatedButton(
                 onPressed: () {
-                  controller.mangeFavourites(homeProdectData);
+                  //controller.mangeFavourites(homeProdectData);
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 0.0,

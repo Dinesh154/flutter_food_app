@@ -18,14 +18,8 @@ class CustomCard extends StatelessWidget {
       shadowColor: Colors.grey.withOpacity(.3),
       child: Column(
         children: [
-          CustomRow(
-            FontWeight.normal,
-            Colors.black,
-            name: 'Shipping'.tr,
-            price: '5\$',
-            color: Theme.of(context).textTheme.headline1!.color!,
-          ),
-          MySeparator(color: Colors.grey),
+           
+          //MySeparator(color: Colors.grey),
           CustomRow(
             FontWeight.bold,
             mainColor,

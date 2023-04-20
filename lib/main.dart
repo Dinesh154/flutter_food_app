@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/routes/routes.dart';
 import 'package:ecommerce_app/utils/theme.dart';
+import 'package:ecommerce_app/view/screens/home_screen.dart';
+import 'package:ecommerce_app/view/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -52,10 +54,11 @@ class MyApp extends StatelessWidget {
           darkTheme: ThemesApp.dark,
           themeMode: ThemeController().themeDataGet,
           // ThemeController().themeDataGet
-          initialRoute: SharedPrefs.instance.getString('token') != null
-              ? Routes.mainScreen
-              : AppRoutes.splash,
-          getPages: AppRoutes.routes,
+          // initialRoute: SharedPrefs.instance.getString('token') != null
+          //     ? Routes.mainScreen
+          //     : Routes.productDetailsScreen,
+           getPages: AppRoutes.routes,
+          home: SplashScreen(),
         );
       },
     );

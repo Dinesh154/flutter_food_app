@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/model/All_recipe.dart';
 import 'package:get/get.dart';
 
 import '../../model/homeProdect/homeProdectData.dart';
@@ -20,33 +21,33 @@ class FavoritesController extends GetxController {
     super.onInit();
   }
 
-  void mangeFavourites(
-    HomeProdectData homeProdectData,
-  ) async {
-    var index = favouritesList
-        .indexWhere((element) => element.id == homeProdectData.id);
-    if (index >= 0) {
-      favouritesList.removeAt(index);
-      await storge.remove(
-        'favouritesList',
-      );
-    } else {
-      favouritesList.addIf(
-          !favouritesList.contains(homeProdectData), homeProdectData);
+  // void mangeFavourites(
+  //    Allrecipes homeProdectData,
+  // ) async {
+  //   var index = favouritesList
+  //       .indexWhere((element) => element.id == homeProdectData.id);
+  //   if (index >= 0) {
+  //     favouritesList.removeAt(index);
+  //     await storge.remove(
+  //       'favouritesList',
+  //     );
+  //   } else {
+  //     favouritesList.addIf(
+  //         !favouritesList.contains(homeProdectData), homeProdectData);
           
-      final String encodedData = HomeProdectData.encode(favouritesList);
-      await storge.setString('favouritesList', encodedData);
-    }
-  }
+  //     final String encodedData = HomeProdectData.encode(favouritesList);
+  //     await storge.setString('favouritesList', encodedData);
+  //   }
+  // }
 
   bool isFavourites(HomeProdectData homeProdectData, int id) {
     bool isFavourite = false;
 
     for (int i = 0; i < favouritesList.length; i++) {
-      if (favouritesList[i].id == id) {
-        isFavourite = true;
-        break;
-      }
+      // if (favouritesList[i].id == id) {
+      //   isFavourite = true;
+      //   break;
+      // }
     }
 
     return isFavourite;

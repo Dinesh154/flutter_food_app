@@ -12,7 +12,7 @@ import '../widgets/OnBoarding/onBoardingRow.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen({Key? key}) : super(key: key);
-  final controller = Get.find<OnBoardingController>();
+  final controller = Get.put(OnBoardingController());
 
   @override
   Widget build(BuildContext context) {

@@ -26,7 +26,6 @@ dependencies:
   persistent_bottom_nav_bar: ^4.0.2
   flutter_rating_bar: ^4.0.1
   flutter_switch: ^0.3.2
-  clip_shadow:
   readmore: ^2.2.0
   flutter_native_splash: ^2.2.6
   cached_network_image: ^3.2.1
@@ -38,6 +37,9 @@ dependencies:
   google_maps_flutter:
   geolocator: 
   geocoding: ^2.0.4
+  pay: ^1.1.0
+  http: ^0.13.5
+
 
 dev_dependencies:
   flutter_test:

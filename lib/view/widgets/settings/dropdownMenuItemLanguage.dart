@@ -51,19 +51,19 @@ class DropdownMenuItemLanguage extends StatelessWidget {
                 ),
                 DropdownMenuItem(
                   child: Text(
-                    arabic,
+                    "telugu",
                     style:  TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 13,
                       color:Theme.of(context).textTheme.headline1!.color,
                     ),
                   ),
-                  value: ara,
+                  value: te,
                 ),
               ],
               value: SharedPrefs.instance.getString("curruntLang") == 'en'
                   ? 'en'
-                  : 'ar',
+                  : 'te',
               onChanged: (value) {
                 MyLocaleController().changeLang(value!);
                 Get.updateLocale(Locale(value));

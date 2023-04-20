@@ -16,7 +16,7 @@ final String decoration;
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: ReadMoreText(
       decoration,
-        trimLines: 2,
+        trimLines: 3,
         style: GoogleFonts.raleway(
           textStyle: TextStyle(
             fontSize: 16.sp,
@@ -30,12 +30,12 @@ final String decoration;
 
         moreStyle: TextStyle(
           color: mainColor,
-          fontSize: 10,
+          fontSize: 10.sp,
           fontWeight: FontWeight.w400,
         ),
         lessStyle: TextStyle(
           color: mainColor,
-          fontSize: 10,
+          fontSize: 10.sp,
           fontWeight: FontWeight.w400,
         ),
       ),

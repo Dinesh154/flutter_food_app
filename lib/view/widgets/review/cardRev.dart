@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/model/All_recipe.dart';
 import 'package:ecommerce_app/model/review/reviewProdect_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -12,8 +13,10 @@ class CardRev extends StatelessWidget {
   CardRev({
     Key? key,
     required this.data,
+    required this.index,
   }) : super(key: key);
-  final Data data;
+  final Allrecipes data;
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -29,22 +32,21 @@ class CardRev extends StatelessWidget {
                 CircleAvatar(
                   radius: 30,
                   child: ClipOval(
-                    child: data.user != null
-                        ? CachedNetworkImage(
-                            imageUrl: data.user!.image!,
-                            placeholder: (context, url) =>
-                                CircularProgressIndicator(),
-                            errorWidget: (context, url, error) => Image.asset(
-                              'assets/icons/person.png',
-                              fit: BoxFit.cover,
-                              width: 80,
-                              height: 80,
-                            ),
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.fill,
-                          )
-                        : Image.asset(
+                    // child:  CachedNetworkImage(
+                    //         imageUrl: data.ima!,
+                    //         placeholder: (context, url) =>
+                    //             CircularProgressIndicator(),
+                    //         errorWidget: (context, url, error) => Image.asset(
+                    //           'assets/icons/person.png',
+                    //           fit: BoxFit.cover,
+                    //           width: 80,
+                    //           height: 80,
+                    //         ),
+                    //         width: 100,
+                    //         height: 100,
+                    //         fit: BoxFit.fill,
+                    //       )
+                      child: Image.asset(
                             'assets/icons/person.png',
                             fit: BoxFit.cover,
                             width: 80,
@@ -58,19 +60,13 @@ class CardRev extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    data.user != null
-                        ? TextWithFont().textWithRobotoFont(
+                    TextWithFont().textWithRobotoFont(
                             color: Theme.of(context).textTheme.headline1!.color,
                             fontSize: 18.sp,
                             fontWeight: FontWeight.normal,
-                            text: data.user!.name!)
-                        : TextWithFont().textWithRobotoFont(
-                            color: Theme.of(context).textTheme.headline1!.color,
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.normal,
-                            text: 'unknown'),
+                            text: 'Sunil'),
                     RatingBar.builder(
-                      initialRating: data.rate!.toDouble(),
+                      initialRating: data.rating.toDouble(),
                       minRating: 1,
                       direction: Axis.horizontal,
                       allowHalfRating: true,
@@ -93,7 +89,7 @@ class CardRev extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Text(
-                data.feedback!,
+                data.reviews[index],
                 style: GoogleFonts.nunitoSans(
                   textStyle: TextStyle(
                       fontSize: 14.sp,
@@ -110,17 +106,17 @@ class CardRev extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: TextWithFont().textWithRalewayFont(
-                  color: Theme.of(context).textTheme.headline1!.color!,
-                  fontSize: 16.sp,
-                  text: data.createdAt!.substring(0, 10),
-                  fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            //   child: TextWithFont().textWithRalewayFont(
+            //       color: Theme.of(context).textTheme.headline1!.color!,
+            //       fontSize: 16.sp,
+            //       text: data.createdAt!.substring(0, 10),
+            //       fontWeight: FontWeight.w500),
+            // ),
+            // SizedBox(
+            //   height: 10.h,
+            // ),
           ],
         ),
       ),

@@ -22,15 +22,15 @@ class RreviewProductController extends GetxController {
     2,
     1,
   ].obs;
-  @override
-  void onInit() {
-    var prodectId = Get.arguments['prodectId'];
-    print('prodectId $prodectId');
-    idProdect = prodectId as int;
-    showProductReviews(prodectId.toString(), 5);
-    isLoading.value = false;
-    super.onInit();
-  }
+  // @override
+  // void onInit() {
+  //   var prodectId = Get.arguments['prodectId'];
+  //   print('prodectId $prodectId');
+  //   idProdect = prodectId as int;
+  //   showProductReviews(prodectId.toString(), 5);
+  //   isLoading.value = false;
+  //   super.onInit();
+  // }
 
   showProductReviews(String productId, int numReviews) async {
     reviewProduct.value = [];

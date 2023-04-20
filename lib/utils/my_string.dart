@@ -5,5 +5,5 @@ String validationName = r'^[a-z A-Z]+$';
 String arabic = 'Arabic 🇸🇦';
 String english = 'English 🇬🇧';
 
-String ara = 'ar';
+String te = 'te';
 String ene = 'en';

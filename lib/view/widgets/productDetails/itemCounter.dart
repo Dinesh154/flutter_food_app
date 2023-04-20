@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../logic/controllers/cart_controllers.dart';
@@ -36,12 +37,12 @@ class ItemCounter extends StatelessWidget {
                     },
                     child: Text("-"),
                   ),
-                  const SizedBox(
-                    width: 5,
+                  SizedBox(
+                    width: 5.w,
                   ),
                   Container(
-                    height: 35,
-                    width: 55,
+                    height: 35.h,
+                    width: 55.w,
                     decoration: const ShapeDecoration(
                       shape: StadiumBorder(
                         side: BorderSide(color: Colors.orange),
@@ -60,8 +61,8 @@ class ItemCounter extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    width: 5,
+                   SizedBox(
+                    width: 5.w,
                   ),
                   ElevatedButton(
                     style: ButtonStyle(

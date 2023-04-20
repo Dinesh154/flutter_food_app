@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/model/All_recipe.dart';
 import 'package:ecommerce_app/view/widgets/cart/counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,7 @@ class ListViewItem extends StatelessWidget {
     required this.cartData,
   });
 
-  final CartData cartData;
+  final Allrecipes cartData;
   final cartController = Get.find<CartController>();
 
   @override
@@ -24,7 +25,7 @@ class ListViewItem extends StatelessWidget {
       key: Key('item ${cartData.id}'),
       direction: DismissDirection.endToStart,
       onDismissed: (direction) {
-        cartController.deleteFromCart(idOrder: cartData.id!);
+        //cartController.deleteFromCart(idOrder: cartData.id!);
       },
       background: Container(
         decoration: BoxDecoration(
@@ -67,7 +68,7 @@ class ListViewItem extends StatelessWidget {
                       height: 75.0.h,
                       width: 75.w,
                       fit: BoxFit.cover,
-                      imageUrl: cartData.image!,
+                      imageUrl: cartData.imageUrl,
                     ),
                   ),
                 ),
@@ -88,7 +89,7 @@ class ListViewItem extends StatelessWidget {
                       height: 10.h,
                     ),
                     Text(
-                      '\$ ${cartData.unitPrice! * cartData.quantity!}',
+                      'Rs ${cartData.price!} "cartData.quantity!"}',
                       style: TextStyle(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w400,
@@ -114,14 +115,14 @@ class ListViewItem extends StatelessWidget {
                         Counter(
                           text: '-',
                           onPressed: () {
-                            cartController.counterRemoveProductToCart(cartData);
+                            //cartController.counterRemoveProductToCart(cartData);
                           },
                         ),
                         SizedBox(
                           width: 4.w,
                         ),
                         Text(
-                          '${cartData.quantity}',
+                          '${"cartData.quantity"}',
                           style: TextStyle(
                               color:
                                   Theme.of(context).textTheme.headline1!.color),
@@ -132,7 +133,7 @@ class ListViewItem extends StatelessWidget {
                         Counter(
                           text: '+',
                           onPressed: () {
-                            cartController.counterAddProductToCart(cartData);
+                            //cartController.counterAddProductToCart(cartData);
                           },
                         )
                       ],

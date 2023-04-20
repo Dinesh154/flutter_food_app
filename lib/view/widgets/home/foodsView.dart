@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/model/All_recipe.dart';
 import 'package:ecommerce_app/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -13,12 +14,12 @@ class FoodsView extends StatelessWidget {
   const FoodsView({
     required this.homeProdectData,
   });
-  final HomeProdectData homeProdectData;
+  final Allrecipes homeProdectData;
   @override
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.only(left: 15, top: 5, bottom: 20),
-        width: 160,
+        width: 260.w,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Theme.of(context).textTheme.headline4!.color,
@@ -37,22 +38,23 @@ class FoodsView extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7),
                   color: Colors.grey.shade300,
-                  image: DecorationImage(
-                    image: CachedNetworkImageProvider(
-                      homeProdectData.image!,
-                    ),
-                    fit: BoxFit.cover,
+                    
                   ),
+                  child:CachedNetworkImage(
+   imageUrl:  homeProdectData.imageUrl,
+   placeholder: (context, url) => new CircularProgressIndicator(),
+   //errorWidget: (context, url, error) => new Icon(Icons.error),
+   fit: BoxFit.cover,
+ ),
                 ),
                 // ),
               ),
-            ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(homeProdectData.name!,
+                Text(homeProdectData.name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.roboto(
@@ -70,7 +72,7 @@ class FoodsView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      '\$${homeProdectData.price}',
+                      '${homeProdectData.price} .Rs',
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: Colors.grey.shade500,
@@ -82,7 +84,7 @@ class FoodsView extends StatelessWidget {
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         RatingBarIndicator(
-                          rating: homeProdectData.rating!.toDouble(),
+                          rating: homeProdectData.rating.toDouble(),
                           itemCount: 1,
                           itemSize: 25.0,
                           physics: BouncingScrollPhysics(),
@@ -109,7 +111,8 @@ class FoodsView extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-        ]));
+          )
+    ,]
+        ));
   }
 }
