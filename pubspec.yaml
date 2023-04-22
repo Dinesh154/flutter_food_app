@@ -39,6 +39,8 @@ dependencies:
   geocoding: ^2.0.4
   pay: ^1.1.0
   http: ^0.13.5
+  firebase_auth: ^4.4.2
+  firebase_core: ^2.10.0
 
 
 dev_dependencies:

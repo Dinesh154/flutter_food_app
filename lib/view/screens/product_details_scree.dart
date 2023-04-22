@@ -67,7 +67,7 @@ class ProductDetailsScreen extends StatelessWidget {
               Stack(
                 children: [
                   ShowImage(
-                    imageUrl: controller.imageUrl!,
+                    imageUrl: controller.imageUrl,
                   ),
                   ImageShadow(),
                 ],
@@ -106,10 +106,10 @@ class ProductDetailsScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   TitelText(
-                                    title: controller.name!,
+                                    title: controller.name,
                                   ),
                                   SupTitle(
-                                    supTitle: controller.name!,
+                                    supTitle: controller.name,
                                     cal: controller.calories.toString(),
                                     price: productdetails.counter.value *
                                         controller.price,
@@ -126,7 +126,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         RatingBarRev(
-                                          rating: controller.rating!.toDouble(),
+                                          rating: controller.rating.toDouble(),
                                         ),
                                         TextWithFont().textWithRalewayFont(
                                             color: Theme.of(context)
@@ -166,7 +166,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                     height: 10,
                                   ),
                                   DescriptionText(
-                                    decoration: controller.description!,
+                                    decoration: controller.description,
                                   ),
 
                                   const SizedBox(
@@ -218,7 +218,6 @@ class ProductDetailsScreen extends StatelessWidget {
                                       press: () {
                                         cartController
                                             .add_to_cart(controller.name);
-                                            
                                       },
                                     ),
                                   )

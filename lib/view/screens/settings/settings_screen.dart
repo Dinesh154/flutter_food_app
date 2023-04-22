@@ -20,7 +20,7 @@ import 'dart:math' as math;
 
 class SettingsScreen extends StatelessWidget {
   SettingsScreen({Key? key}) : super(key: key);
-  final settingController = Get.find<SettingsController>();
+  final settingController = Get.put(SettingsController());
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import '../../model/user.dart';
 import '../../routes/routes.dart';
 import '../../services/auth_api.dart';
@@ -8,7 +9,7 @@ import '../../view/widgets/get_snackbar.dart';
 
 class AuthController extends GetxController {
   bool isVisibilty = true;
-
+final FirebaseAuth _auth = FirebaseAuth.instance;
   bool validate = true;
   String? currentTextPin;
 
@@ -62,13 +63,17 @@ class AuthController extends GetxController {
     startLoding();
 
     try {
-      bool result = await AuthApi().signupAPI(phone, fullName, password, email);
+      UserCredential user=await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    print(user.user!.email);
       stopLoding();
 
-      if (result == true) {
+      
         Get.toNamed(Routes.mainScreen);
-      }
-      if (result == false) {
+      
+      if (user == false) {
         GetSnackbar(title: "Oops! Something went wrong.", supTitle: '');
       }
       return true;
@@ -89,14 +94,9 @@ class AuthController extends GetxController {
     startLoding();
 
     try {
-      UserModel user = await AuthApi().login(
-        email: email,
-        password: password,
-      );
-
+      UserCredential user= await _auth.signInWithEmailAndPassword(email: email, password: password);
       stopLoding();
-
-      if (user.user != null) {
+      if (user!=false) {
         Get.toNamed(Routes.mainScreen);
       } else {
         GetSnackbar(title: "Oops! Something went wrong.", supTitle: '');

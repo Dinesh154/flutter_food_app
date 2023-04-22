@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:ecommerce_app/main.dart';
 import 'package:ecommerce_app/routes/routes.dart';
 import 'package:ecommerce_app/utils/my_string.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -17,6 +18,7 @@ import '../../view/widgets/get_snackbar.dart';
 
 class SettingsController extends GetxController {
   var swithchThemwValue = false.obs;
+   final FirebaseAuth _auth = FirebaseAuth.instance;
   var langLocal = Get.deviceLocale?.languageCode.obs;
   var name = ''.obs;
   var image = ''.obs;
@@ -110,8 +112,8 @@ class SettingsController extends GetxController {
     update();
   }
 
-  void logout() {
-    AuthApi().logout();
+  void logout() async{
+    await _auth.signOut();
     Get.toNamed(Routes.loginScreen);
     update();
   }

@@ -21,7 +21,7 @@ class SignUpScreen extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
 
-  final controller = Get.find<AuthController>();
+  final controller = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +100,7 @@ class SignUpScreen extends StatelessWidget {
                           controller: phoneController,
                           obscureText: false,
                           validator: (value) {
-                            if (value.length != 9) {
+                            if (value.length != 10) {
                               return 'Mobile Number must be of 10 digit'.tr;
                             } else {
                               return null;

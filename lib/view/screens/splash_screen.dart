@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/view/screens/auth/login_screen.dart';
+import 'package:ecommerce_app/view/screens/auth/signup_screen.dart';
 import 'package:ecommerce_app/view/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -59,9 +61,9 @@ class SplashScreen extends StatelessWidget {
               ),
               AuthButton(
                 press: () {
-                  Get.to(()=>OnBoardingScreen());
+                  Get.to(()=>SignUpScreen());
                 },
-                text: 'Let\'s get Started'.tr,
+                text: 'Sign up'.tr,
               ),
               SizedBox(
                 height: 49.h,

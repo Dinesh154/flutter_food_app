@@ -10,7 +10,7 @@ class CustomCard extends StatelessWidget {
     Key? key,
     required this.total,
   }) : super(key: key);
-  final double total;
+  final int total;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -24,7 +24,7 @@ class CustomCard extends StatelessWidget {
             FontWeight.bold,
             mainColor,
             name: 'Total Price'.tr,
-            price: '${total + 5}\$',
+            price: 'Rs.${total}',
             color: mainColor,
           ),
         ],

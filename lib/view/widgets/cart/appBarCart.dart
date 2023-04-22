@@ -16,7 +16,7 @@ class AppBarCart extends StatelessWidget with PreferredSizeWidget {
       centerTitle: true,
       bottom: const PreferredSizeInAppBar(),
       title: Text(
-        'Your Carts'.tr,
+        'Your Cart Items'.tr,
         style: TextStyle(
             fontSize: 20.sp,
             color: Theme.of(context).textTheme.headline1!.color,

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:ecommerce_app/model/All_recipe.dart';
 import 'package:ecommerce_app/model/cart/Cart_model.dart';
+import 'package:ecommerce_app/model/cart_model.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import '../../services/baseAPI.dart';
@@ -9,26 +10,26 @@ import '../../services/cart_services.dart';
 import '../../utils/sharPreferenceUtils .dart';
 
 class CartController extends GetxController {
-  var cartDataList = <Allrecipes>[].obs;
+  RxList<cart_model> cartDataList = <cart_model>[].obs;
   var storge = SharedPrefs.instance;
   String cartListString = '';
-  RxInt cartTotalPrice = 0.obs;
+  RxInt cart_TotalPrice = 0.obs;
   void fetchAll_cart() async {
-    print('object');
+    print('called');
     try {
       //isLoading(true);
       var all_recipe = await http.get(Uri.parse(
-          "http://192.168.43.183:3000/api/getCartItems/kasasunil344@gmail.com"));
+          "http://192.168.218.183:3000/api/getCartItems/kasasunil344@gmail.com"));
       print("request");
       print(all_recipe.statusCode);
-
+      print(all_recipe.body);
       if (all_recipe.statusCode == 200) {
-        var all_recipeJson = AllrecipesFromJson(all_recipe.body);
+        var all_recipeJson = cart_modelFromJson(all_recipe.body);
         print(all_recipeJson);
         if (all_recipeJson != null) {
           cartDataList.value = all_recipeJson;
           print(cartDataList.value[0].imageUrl);
-
+          cartTotalPrice();
         }
       }
       update();
@@ -38,7 +39,14 @@ class CartController extends GetxController {
       //isLoading(false);
     }
   }
-  
+
+  void cartTotalPrice() {
+    cartDataList.forEach((item) {
+      int price = item.price;
+      cart_TotalPrice.value += item.quantity! * price;
+      update();
+    });
+  }
   // @override
 //   void onInit() async {
 //     cartListString = storge.getString('cartDataList') ?? '';
@@ -118,15 +126,6 @@ class CartController extends GetxController {
 //     final String encodedData = CartData.encode(cartDataList);
 //     storge.setString('cartDataList', encodedData);
 //     update();
-//   }
-
-//   double cartTotalPrice() {
-//     double total = 0;
-//     cartDataList.forEach((item) {
-//       num price = item.unitPrice!;
-//       total += item.quantity! * price;
-//     });
-//     return total;
 //   }
 
 //   void checkOutCart({required List<CartData> cartData}) async {
