@@ -10,9 +10,9 @@ import '../../utils/sharPreferenceUtils .dart';
 import '../widgets/favorite/appBarFavorites.dart';
 import '../widgets/favorite/itemListView.dart';
 
-class FavoritesScreen extends GetView<FavoritesController> {
-  const FavoritesScreen({Key? key}) : super(key: key);
-
+class FavoritesScreen extends StatelessWidget {
+   FavoritesScreen({Key? key}) : super(key: key);
+var controller=Get.put(FavoritesController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
