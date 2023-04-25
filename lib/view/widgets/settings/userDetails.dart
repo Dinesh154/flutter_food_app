@@ -55,14 +55,14 @@ class UserDetails extends StatelessWidget {
                   fontSize: 18.sp,
                   fontWeight: FontWeight.normal,
                   text: SharedPrefs.instance.getString('token') == null
-                      ? 'unknown'
+                      ? 'Yaswitha'
                       : settingsController.name.value),
               TextWithFont().textWithRobotoFont(
                   color: Theme.of(context).textTheme.headline1!.color,
                   fontSize: 13.sp,
                   fontWeight: FontWeight.normal,
                   text: SharedPrefs.instance.getString('token') == null
-                      ? 'unknown'
+                      ? 'Yaswitha'
                       : settingsController.email.value),
             ],
           )

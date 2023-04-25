@@ -1,8 +1,10 @@
 import 'dart:ffi';
 
+import 'package:ecommerce_app/logic/controllers/home_controllers.dart';
+import 'package:ecommerce_app/model/All_recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:http/http.dart' as http;
 import '../../enums/loading_state.dart';
 import '../../enums/loading_types.dart';
 import '../../model/allCategories.dart';
@@ -12,9 +14,9 @@ import '../../services/food_services.dart';
 import '../../services/helper/statusrequest.dart';
 
 class FodeController extends GetxController {
-  var allFoodsList = <HomeProdectData>[].obs;
+  var allFoodsList = <Allrecipes>[].obs;
   var allCategoriesList = <Data>[].obs;
-
+  var homecontroller = HomeController();
   final isLoading = true.obs;
   final scrollController = ScrollController();
   int _pageNo = 1;
@@ -37,9 +39,35 @@ class FodeController extends GetxController {
 
   @override
   void onInit() async {
-    await viewAllFood();
+    //await viewAllFood();
+    await fetchAll_recipe();
     await viewCategories();
     scrollController.addListener(_scrollListener);
+  }
+
+   fetchAll_recipe() async {
+    print('object');
+    try {
+      isLoading(true);
+      var all_recipe = await http
+          .get(Uri.parse("http://192.168.27.212:3000/api/allRecipes"));
+      print("request");
+      print(all_recipe.statusCode);
+
+      if (all_recipe.statusCode == 200) {
+        var all_recipeJson = AllrecipesFromJson(all_recipe.body);
+        print(all_recipeJson);
+        if (all_recipeJson != null) {
+          this.allFoodsList.value = all_recipeJson;
+          print(this.allFoodsList.value[0].imageUrl);
+        }
+      }
+      update();
+    } catch (e) {
+      print(e);
+    } finally {
+      isLoading(false);
+    }
   }
 
   void _scrollListener() async {
@@ -56,7 +84,7 @@ class FodeController extends GetxController {
               loadingType: LoadingType.completed,
               completed: "there is no data");
         } else {
-          allFoodsList.addAll(listOfData);
+          //allFoodsList.addAll(listOfData);
           loadingState.value = LoadingState(loadingType: LoadingType.loaded);
         }
       } catch (err) {
@@ -66,13 +94,11 @@ class FodeController extends GetxController {
     }
   }
 
-  Future<void> viewAllFood() async {
-    final listOfData = await FoodApi.viewAllFoods(
-      _pageNo,
-    );
-    allFoodsList.assignAll(listOfData);
-    isLoading.value = false;
-  }
+  // Future<void> viewAllFood() async {
+  //   homeController.fetchAll_recipe();
+  //   allFoodsList.assignAll(listOfData);
+  //   isLoading.value = false;
+  // }
 
   viewCategories() async {
     var response = await FoodApi.viewAllCategories();

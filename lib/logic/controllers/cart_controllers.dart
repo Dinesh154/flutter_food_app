@@ -14,12 +14,13 @@ class CartController extends GetxController {
   var storge = SharedPrefs.instance;
   String cartListString = '';
   RxInt cart_TotalPrice = 0.obs;
+  RxList quantity_list = [].obs;
   void fetchAll_cart() async {
     print('called');
     try {
       //isLoading(true);
       var all_recipe = await http.get(Uri.parse(
-          "http://192.168.218.183:3000/api/getCartItems/kasasunil344@gmail.com"));
+          "http://192.168.27.212:3000/api/getCartItems/kasasunil344@gmail.com"));
       print("request");
       print(all_recipe.statusCode);
       print(all_recipe.body);
@@ -28,11 +29,12 @@ class CartController extends GetxController {
         print(all_recipeJson);
         if (all_recipeJson != null) {
           cartDataList.value = all_recipeJson;
-          print(cartDataList.value[0].imageUrl);
+          // print(cartDataList.value[0].imageUrl);
+
           cartTotalPrice();
+          update();
         }
       }
-      update();
     } catch (e) {
       print(e);
     } finally {
@@ -43,9 +45,21 @@ class CartController extends GetxController {
   void cartTotalPrice() {
     cartDataList.forEach((item) {
       int price = item.price;
-      cart_TotalPrice.value += item.quantity! * price;
+      print(item.quantity);
+      cart_TotalPrice.value += price;
       update();
     });
+  }
+
+  void change_quantity(int index) {
+    quantity_list[index] += 1;
+  }
+
+  void getquantity_list() {
+    for (int i = 0; i < cartDataList.length; i++) {
+      quantity_list.add(1);
+    }
+    update();
   }
   // @override
 //   void onInit() async {

@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/utils/theme.dart';
+import 'package:ecommerce_app/view/screens/product_details_scree.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,7 +9,7 @@ import '../../routes/routes.dart';
 import '../widgets/AllFood/appBarMeal.dart';
 import '../widgets/AllFood/mealCard.dart';
 
-class AllFoodScreen extends GetView<FodeController> {
+class AllFoodScreen extends StatelessWidget {
   const AllFoodScreen({Key? key}) : super(key: key);
 
   @override
@@ -57,14 +58,8 @@ class AllFoodScreen extends GetView<FodeController> {
                         } else {
                           return GestureDetector(
                             onTap: () {
-                              Get.toNamed(
-                                Routes.productDetailsScreen,
-                                arguments: [
-                                  {
-                                    'prodectData':
-                                        controller.allFoodsList[index]
-                                  }
-                                ],
+                              Get.to(
+                                ProductDetailsScreen(controller: controller.allFoodsList[index])
                               );
                             },
                             child: MealCard(controller.allFoodsList[index]),

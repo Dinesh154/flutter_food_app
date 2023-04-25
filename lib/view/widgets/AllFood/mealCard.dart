@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/model/All_recipe.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,7 +7,7 @@ import '../textWithFont.dart';
 
 class MealCard extends StatelessWidget {
   MealCard(this.homeProdectData);
-  final HomeProdectData homeProdectData;
+  final  Allrecipes homeProdectData;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +34,7 @@ class MealCard extends StatelessWidget {
                   color: Colors.grey.shade300,
                   image: DecorationImage(
                       image: NetworkImage(
-                        homeProdectData.image ?? '',
+                        homeProdectData.imageUrl ?? '',
                       ),
                       fit: BoxFit.cover)),
             ),
@@ -52,22 +53,22 @@ class MealCard extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    TextWithFont().textWithRalewayFont(
-                        color: Theme.of(context)
-                            .textTheme
-                            .headline1!
-                            .color!
-                            .withOpacity(.5),
-                        fontSize: 16.sp,
-                        text: homeProdectData.description!.length <= 15
-                            ? '${homeProdectData.description} '
-                            : '${homeProdectData.description} '.substring(15),
-                        fontWeight: FontWeight.w500)
-                  ],
-                ),
+                // Row(
+                //   crossAxisAlignment: CrossAxisAlignment.center,
+                //   children: [
+                //     TextWithFont().textWithRalewayFont(
+                //         color: Theme.of(context)
+                //             .textTheme
+                //             .headline1!
+                //             .color!
+                //             .withOpacity(.5),
+                //         fontSize: 16.sp,
+                //         text: homeProdectData.description!.length <= 15
+                //             ? '${homeProdectData.description} '
+                //             : '${homeProdectData.description} '.substring(5),
+                //         fontWeight: FontWeight.w500)
+                //   ],
+                // ),
               ],
             ),
           ),
