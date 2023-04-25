@@ -21,6 +21,7 @@ class CartController extends GetxController {
       //isLoading(true);
       var all_recipe = await http.get(Uri.parse(
           "http://192.168.27.212:3000/api/getCartItems/kasasunil344@gmail.com"));
+          
       print("request");
       print(all_recipe.statusCode);
       print(all_recipe.body);

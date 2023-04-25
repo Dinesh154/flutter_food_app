@@ -45,7 +45,7 @@ class FodeController extends GetxController {
     scrollController.addListener(_scrollListener);
   }
 
-   fetchAll_recipe() async {
+  fetchAll_recipe() async {
     print('object');
     try {
       isLoading(true);
